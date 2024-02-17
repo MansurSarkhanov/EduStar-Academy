@@ -33,7 +33,6 @@ class _PageViewWidgetState extends State<PageViewWidget> {
                 child: const Icon(Icons.home),
                 onTap: () {
                   _controller.jumpToPage(1);
-
                 },
               ),
               label: "Home",
@@ -42,18 +41,14 @@ class _PageViewWidgetState extends State<PageViewWidget> {
               icon: InkWell(
                 child: const Icon(Icons.search),
                 onTap: () {
-                  _controller.animateToPage(
-                    2,duration: const Duration(seconds: 1),curve: Curves.linear);
-
+                  _controller.animateToPage(2, duration: const Duration(seconds: 1), curve: Curves.linear);
                 },
               ),
               label: "Search",
             ),
           ]),
       body: PageView(controller: _controller, scrollDirection: Axis.horizontal, children: [
-        Container(
-          color: Colors.green,
-        ),
+        const FirstPage(),
         Container(
           color: Colors.blue,
         ),
@@ -61,6 +56,17 @@ class _PageViewWidgetState extends State<PageViewWidget> {
           color: Colors.red,
         )
       ]),
+    );
+  }
+}
+
+class FirstPage extends StatelessWidget {
+  const FirstPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.green,
     );
   }
 }

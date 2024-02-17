@@ -21,7 +21,6 @@ class _NavigationBarWidgetState extends State<NavigationBarWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
         bottomNavigationBar: BottomNavigationBar(
-          
           elevation: 0,
           onTap: null,
             selectedItemColor: Colors.green,
