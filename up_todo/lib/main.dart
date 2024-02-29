@@ -1,8 +1,29 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:up_todo/Feature/Screens/Splash/splash_page.dart';
 
-void main() {
-  runApp(const MyApp());
+import 'Core/Provider/home_provider.dart';
+import 'Core/Provider/onboarding_provider.dart';
+import 'Core/Provider/splash_provider.dart';
+import 'firebase_options.dart';
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  runApp(MultiProvider(providers: [
+    ChangeNotifierProvider(
+      create: (context) => SplashProvider()..checkUserLogin(),
+    ),
+    ChangeNotifierProvider(
+      create: (context) => OnboardingProvider(),
+    ),
+    ChangeNotifierProvider(
+      create: (context) => HomeProvider(),
+    )
+  ], child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
