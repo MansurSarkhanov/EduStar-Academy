@@ -2,10 +2,13 @@ import 'package:dio/dio.dart';
 import 'package:flutter_tutorial/202/Api/models/user_model.dart';
 
 final class ApiService {
-  final _dio = Dio(BaseOptions(baseUrl: 'https://jsonplaceholder.typicode.com/', contentType: "Application/json"));
+  final _dio = Dio(BaseOptions(
+    baseUrl: 'https://jsonplaceholder.typicode.com/',
+    contentType: "Application/json",
+  ));
 
   Future<List<UserModel>?> getPosts() async {
-    final response = await _dio.get('/posts');
+    final response = await _dio.get('/posts', queryParameters: {"id": "5"});
     if (response.statusCode == 200) {
       final result = response.data;
       if (result is List) {

@@ -9,11 +9,9 @@ class HomeProvider extends ChangeNotifier {
   bool isLoading = false;
   Future<void> fetchPost() async {
     isLoading = true;
-    notifyListeners();
     final test = await _apiService.getPosts();
     if (test != null) {
       items = test;
-      notifyListeners();
       isLoading = false;
       notifyListeners();
     }
