@@ -12,11 +12,7 @@ final class OnboardingProvider extends ChangeNotifier {
   Future<void> checkOnboaridng(context) async {
     isLogin = await cacheManger.readBool(key: 'key');
     if (isLogin) {
-      Navigator.of(context).pushReplacement(MaterialPageRoute(
-        builder: (context) {
-          return const HomePage();
-        },
-      ));
+      Navigator.of(context).pushReplacementNamed('/home');
     }
     notifyListeners();
   }

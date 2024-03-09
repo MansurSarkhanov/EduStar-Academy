@@ -1,7 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:up_todo/Feature/Screens/Splash/splash_page.dart';
+import 'package:up_todo/Feature/Screens/Login/login_page.dart';
 
 import 'Core/Provider/home_provider.dart';
 import 'Core/Provider/onboarding_provider.dart';
@@ -32,13 +33,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+ 
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
+          scaffoldBackgroundColor: Colors.black,
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
+          textTheme: GoogleFonts.ubuntuTextTheme()
+        
       ),
-      home: const SpalashPage(),
+      home: LoginPage(),
     );
   }
 }
