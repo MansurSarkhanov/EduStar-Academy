@@ -10,15 +10,11 @@ class OnboardingPage extends StatefulWidget {
   State<OnboardingPage> createState() => _OnboardingPageState();
 }
 
-class _OnboardingPageState extends State<OnboardingPage> with OnboardingMixin {
+class _OnboardingPageState extends State<OnboardingPage> {
   @override
   Widget build(BuildContext context) {
-    print('Test');
+    print('Onboarding');
 
-    // final providerRead = context.read<OnboardingProvider>();
-    // final providerWatch = context.watch<OnboardingProvider>();
-    // return providerWatch.isLogin
-    //     ? const HomePage()
     return Consumer(builder: (context, OnboardingProvider provider, child) {
       return Scaffold(
         floatingActionButton: ElevatedButton(
@@ -97,10 +93,4 @@ class _OnboardingPageState extends State<OnboardingPage> with OnboardingMixin {
   }
 }
 
-mixin OnboardingMixin on State<OnboardingPage> {
-  @override
-  void initState() {
-    super.initState();
-    context.read<OnboardingProvider>().checkOnboaridng(context);
-  }
-}
+

@@ -8,11 +8,14 @@ class CustomField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextField(
+      style: const TextStyle(color: Colors.white),
+      controller: controller,
       obscureText: isShowIcon ?? false,
       decoration: InputDecoration(
           focusedBorder: const OutlineInputBorder(borderSide: BorderSide(color: Colors.blue)),
           enabledBorder: const OutlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
           hintText: hintText,
+        
           hintStyle: const TextStyle(color: Colors.grey),
           suffixIcon: (isShowIcon ?? false) ? const Icon(Icons.visibility) : const SizedBox.shrink()),
     );

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:up_todo/Feature/Screens/Home/home_page.dart';
+import 'package:up_todo/Feature/Screens/Login/login_page.dart';
 
-import '../Cache/cach_manager.dart';
+import '../../Cache/cach_manager.dart';
 
 final class OnboardingProvider extends ChangeNotifier {
   final PageController pageController = PageController();
@@ -24,7 +24,7 @@ final class OnboardingProvider extends ChangeNotifier {
       cacheManger.saveBool(key: 'key', value: true);
       Navigator.of(context).push(MaterialPageRoute(
         builder: (context) {
-          return const HomePage();
+          return LoginPage();
         },
       ));
     }

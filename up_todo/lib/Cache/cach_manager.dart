@@ -10,4 +10,8 @@ final class CacheManager {
     final prefs = await SharedPreferences.getInstance();
     return prefs.getBool(key) ?? false;
   }
+  Future<void> saveString({required String key, required String value}) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString(key, value);
+  }
 }

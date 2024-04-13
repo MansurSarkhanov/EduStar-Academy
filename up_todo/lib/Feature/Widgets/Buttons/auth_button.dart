@@ -21,17 +21,20 @@ class AuthButton extends StatelessWidget {
               ),
             ),
           )
-        : InkWell(
-            onTap: onTap,
-            child: Container(
-              color: Colors.purple,
-              child: Center(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 14.0),
-                  child: Text(
-                    text,
-                    style: const TextStyle(color: Colors.white, fontSize: 16),
-                  ),
+        : ElevatedButton(
+            onPressed: onTap,
+            style: ButtonStyle(backgroundColor: MaterialStateProperty.resolveWith((states) {
+              if (states.contains(MaterialState.pressed)) {
+                return Colors.red;
+              }
+              return Colors.purple;
+            })),
+            child: Center(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 14.0),
+                child: Text(
+                  text,
+                  style: const TextStyle(color: Colors.white, fontSize: 16),
                 ),
               ),
             ),
