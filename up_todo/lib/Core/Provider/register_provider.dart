@@ -18,7 +18,7 @@ class RegisterProvider extends ChangeNotifier {
     final result = await _authRepository.registerUser(email: email, password: password);
     uplaodImage();
 
-    print('Uplaod');
+    print('');
     if (result!.isSuccess()) {
 
       final userCredential = result.tryGetSuccess();
