@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_tutorial/202/Api/models/firebase_%20model.dart';
 import 'package:flutter_tutorial/202/Api/models/user_model.dart';
+import 'package:uuid/uuid.dart';
 
 final class ApiService {
   final _dio = Dio(BaseOptions(
@@ -17,5 +19,11 @@ final class ApiService {
     }
     print('Your response is Erorr');
     return null;
+  }
+
+  Future<void> firebaseSendData({required String email, required String password}) async {
+    final firebaseDio = Dio(BaseOptions(baseUrl: 'https://up-toda-default-rtdb.firebaseio.com/'));
+    final userModel = FirebaseModel(email: email, password: password, uuid: const Uuid().v4()).toJson();
+    final request = await firebaseDio.post('users.json', data: userModel);
   }
 }

@@ -7,6 +7,10 @@ class HomeProvider extends ChangeNotifier {
   List<UserModel> items = [UserModel(body: 'sdfsdf')];
   final _apiService = ApiService();
   bool isLoading = false;
+
+
+
+
   Future<void> fetchPost() async {
     isLoading = true;
     final test = await _apiService.getPosts();
@@ -16,4 +20,6 @@ class HomeProvider extends ChangeNotifier {
       notifyListeners();
     }
   }
+
+  
 }
