@@ -12,11 +12,23 @@ class AuthButton extends StatelessWidget {
             onTap: onTap,
             child: Container(
               decoration: BoxDecoration(border: Border.all(color: Colors.blue)),
-              child: const Padding(
-                padding: EdgeInsets.symmetric(vertical: 14.0),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 14.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: [Icon(Icons.facebook), Text('Register with Google')],
+                  children: [
+                    const Icon(
+                      Icons.facebook,
+                      color: Colors.white,
+                    ),
+                    const SizedBox(
+                      width: 16,
+                    ),
+                    Text(
+                      text,
+                      style: const TextStyle(color: Colors.white, fontSize: 16),
+                    )
+                  ],
                 ),
               ),
             ),

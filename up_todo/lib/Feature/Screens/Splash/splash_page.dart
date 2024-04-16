@@ -21,7 +21,7 @@ class _SpalashPageState extends State<SpalashPage> {
     final result = await context.read<SplashProvider>().checkUserLogin();
     print(result);
     if (!result) {
-      final onboardResult = await cacheManger.readBool(key: 'key');
+      final onboardResult = await cacheManger.readBool(key: 'logged');
       print(onboardResult);
       if (onboardResult) {
         Navigator.of(context).pushReplacement(MaterialPageRoute(

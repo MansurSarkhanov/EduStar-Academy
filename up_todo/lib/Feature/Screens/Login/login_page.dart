@@ -15,6 +15,7 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Padding(
         padding: const EdgeInsets.only(left: 24.0, right: 24),
         child: Center(
@@ -54,7 +55,7 @@ class LoginPage extends StatelessWidget {
               const OrDivider(),
               sizedBoxH(50),
               AuthButton(
-                text: "Login",
+                text: "Login with Facebook",
                 onTap: () {},
                 isGoogle: true,
               ),

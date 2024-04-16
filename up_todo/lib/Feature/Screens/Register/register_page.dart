@@ -27,9 +27,44 @@ class RegisterPage extends StatelessWidget {
                   //     height: 150,
                   //   )
                   // ],
-                  const Text(
-                    "Register",
-                    style: TextStyle(color: Colors.white, fontSize: 32),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text(
+                        "Register",
+                        style: TextStyle(color: Colors.white, fontSize: 32),
+                      ),
+                      InkWell(
+                          onTap: () {
+                            context.read<RegisterProvider>().pickImage();
+                          },
+                          child: (context.watch<RegisterProvider>().selectedImage != null)
+                              ? Container(
+                                  height: 80,
+                                  width: 80,
+                                  decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      image: DecorationImage(
+                                          fit: BoxFit.cover,
+                                          image: MemoryImage(context.watch<RegisterProvider>().imageReadAsByte!))),
+                                )
+                              : Container(
+                                  height: 80,
+                                  width: 80,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white.withOpacity(0.2),
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: const Padding(
+                                    padding: EdgeInsets.all(16.0),
+                                    child: Center(
+                                        child: Icon(
+                                      Icons.add_a_photo_outlined,
+                                      color: Colors.white,
+                                    )),
+                                  ),
+                                ))
+                    ],
                   ),
                   sizedBoxH(50),
                   const Text(

@@ -45,6 +45,8 @@ dependencies:
   google_fonts: ^6.2.0
   another_flushbar: ^1.12.30
   json_annotation: ^4.8.1
+  image_picker: ^1.0.8
+  firebase_storage: ^11.7.1
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -21,7 +21,6 @@ final class OnboardingProvider extends ChangeNotifier {
     currentPageIndex++;
     if (currentPageIndex == 3) {
       print(currentPageIndex);
-      cacheManger.saveBool(key: 'key', value: true);
       Navigator.of(context).push(MaterialPageRoute(
         builder: (context) {
           return LoginPage();

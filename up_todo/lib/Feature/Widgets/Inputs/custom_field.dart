@@ -12,6 +12,7 @@ class CustomField extends StatelessWidget {
       controller: controller,
       obscureText: isShowIcon ?? false,
       decoration: InputDecoration(
+      
           focusedBorder: const OutlineInputBorder(borderSide: BorderSide(color: Colors.blue)),
           enabledBorder: const OutlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
           hintText: hintText,
