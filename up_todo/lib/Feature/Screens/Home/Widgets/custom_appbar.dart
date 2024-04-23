@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:up_todo/Core/Models/user_firestore_model.dart';
 
 import '../../../../Core/Constants/strings.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({
     super.key,
+    required this.userModel,
   });
+  final UserFirestoreModel userModel;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +18,11 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           margin: const EdgeInsets.only(right: 24),
           height: 42,
           width: 42,
-          decoration: const BoxDecoration(shape: BoxShape.circle, color: Colors.white),
+          decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              image: DecorationImage(
+                  fit: BoxFit.cover,
+                  image: NetworkImage(userModel.image ?? "https://cdn-icons-png.flaticon.com/512/149/149071.png"))),
         )
       ],
       backgroundColor: Colors.transparent,
@@ -24,8 +31,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         color: Colors.white,
       ),
       centerTitle: true,
-      title: const Text(
-        AppStrings.index,
+      title: Text(
+        userModel.username ?? AppStrings.index,
         style: TextStyle(
           color: Colors.white,
         ),

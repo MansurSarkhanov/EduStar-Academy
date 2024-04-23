@@ -14,13 +14,23 @@ class RegisterProvider extends ChangeNotifier {
 
   XFile? selectedImage;
   Uint8List? imageReadAsByte;
-  Future<void> registerUser(context, {required String email, required String password}) async {
-    final result = await _authRepository.registerUser(email: email, password: password);
-    uplaodImage();
+  Future<void> registerUser(context,
+      {required String email,
+      required String password,
+      required String username,
+     }) async {
+    final url=
+    await uplaodImage();
 
-    print('');
+
+    final result = await _authRepository.registerUser(
+      email: email,
+      password: password,
+      username: username,
+      image: url?? "https://cdn-icons-png.flaticon.com/512/149/149071.png",
+    );
+
     if (result!.isSuccess()) {
-
       final userCredential = result.tryGetSuccess();
       Navigator.of(context).pushReplacement(MaterialPageRoute(
         builder: (context) {
@@ -46,7 +56,8 @@ class RegisterProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void uplaodImage() {
-    _firebaseStorage.uploadImage(imageReadAsByte, selectedImage!.name);
+  Future<String?> uplaodImage() async {
+    final url=await _firebaseStorage.uploadImage(imageReadAsByte, selectedImage!.name);
+    return url;
   }
 }

@@ -7,6 +7,7 @@ import 'package:up_todo/Core/Provider/login_provider.dart';
 import 'package:up_todo/Core/Provider/register_provider.dart';
 import 'package:up_todo/Feature/Screens/Splash/splash_page.dart';
 
+import 'Cache/cach_manager.dart';
 import 'Core/Provider/home_provider.dart';
 import 'Core/Provider/onboarding_provider.dart';
 import 'Core/Provider/splash_provider.dart';
@@ -14,8 +15,8 @@ import 'firebase_options.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // final cacheManger = CacheManager();
-  // cacheManger.saveBool(key: 'key', value: false);
+  final cacheManger = CacheManager();
+  cacheManger.saveBool(key: 'logged', value: false);
 
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,

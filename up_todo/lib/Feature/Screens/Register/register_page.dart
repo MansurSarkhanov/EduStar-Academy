@@ -9,6 +9,8 @@ class RegisterPage extends StatelessWidget {
   RegisterPage({super.key});
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _usernameController = TextEditingController();
+
 
   @override
   Widget build(BuildContext context) {
@@ -68,6 +70,11 @@ class RegisterPage extends StatelessWidget {
                   ),
                   sizedBoxH(50),
                   const Text(
+                    "Username",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  CustomField(hintText: 'Enter Username', controller: _usernameController),
+                  const Text(
                     "Email Address",
                     style: TextStyle(color: Colors.white),
                   ),
@@ -82,23 +89,15 @@ class RegisterPage extends StatelessWidget {
                     controller: _passwordController,
                     isShowIcon: false,
                   ),
-                  sizedBoxH(24),
-                  const Text(
-                    "Confirm Password",
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  CustomField(
-                    hintText: 'Enter Password',
-                    controller: _passwordController,
-                    isShowIcon: false,
-                  ),
+
+
                   sizedBoxH(50),
                   Consumer<RegisterProvider>(builder: (context, provider, child) {
                     return AuthButton(
                         text: "Register",
                         onTap: () {
                           provider.registerUser(context,
-                              email: _emailController.text, password: _passwordController.text);
+                              email: _emailController.text, password: _passwordController.text,username:_usernameController.text);
                         });
                   }),
                   sizedBoxH(50),

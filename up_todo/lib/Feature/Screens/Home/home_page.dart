@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
+import 'package:up_todo/Core/Provider/home_provider.dart';
 import 'package:up_todo/Feature/Screens/Home/Widgets/Tab/calendar_tab.dart';
 import 'package:up_todo/Feature/Screens/Home/Widgets/Tab/focus_tab.dart';
 import 'package:up_todo/Feature/Screens/Home/Widgets/Tab/profile_tab.dart';
@@ -22,6 +24,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   void initState() {
     super.initState();
     controller = TabController(length: 4, vsync: this);
+    context.read<HomeProvider>().fetcUserInfo(context);
   }
 
   @override
@@ -41,7 +44,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               ),
             )),
       ),
-      appBar: const CustomAppBar(),
+      appBar: CustomAppBar(
+        userModel: context.watch<HomeProvider>().currentUserModel,
+      ),
       body: TabBarView(
         controller: controller,
         children: const [HomeTab(), CalendarTab(), FocusTab(), ProfileTab()],

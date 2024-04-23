@@ -6,10 +6,16 @@ final class FirebaseStorageRef {
   final storageRef = FirebaseStorage.instance.ref();
   XFile? userImage;
 
-  void uploadImage(Uint8List? imageReadAsByte, String name) {
+  Future<String?> uploadImage(Uint8List? imageReadAsByte, String name) async {
     if (imageReadAsByte != null) {
-      final storage =
-          storageRef.child('profile/').child(name).putData(imageReadAsByte, SettableMetadata(contentType: 'image/png'));
+      final storage = await storageRef
+          .child('profile/')
+          .child(name)
+          .putData(imageReadAsByte, SettableMetadata(contentType: 'image/png'));
+
+      final url = await storage.ref.getDownloadURL();
+      return url;
     }
+    return null;
   }
 }

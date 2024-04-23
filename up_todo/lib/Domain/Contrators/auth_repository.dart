@@ -7,6 +7,6 @@ import '../../Core/Models/Login/user_login_response_model.dart';
 abstract interface class IAuthRepository {
   Future<Result<UserLoginResponseModel, AuthErrorModel>?> loginUser({required String email, required String password});
   Future<Result<UserRegisterResponseModel, AuthErrorModel>?> registerUser(
-      {required String email, required String password});
+      {required String email, required String password,required String username, required String image});
   Future<Result<UserRegisterResponseModel, AuthErrorModel>?> googleLogin();
 }

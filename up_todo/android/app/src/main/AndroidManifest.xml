@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="up_todo"
+        android:label="Up Todo"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
